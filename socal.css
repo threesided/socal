@@ -1,0 +1,350 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.clickable {
+  cursor: pointer;
+}
+
+.no-select {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.so-cal {
+    position: relative;
+    min-width: 300px;
+    max-width: 600px;
+    margin: 0 auto;
+    color: #666;
+    font-family: 'Open Sans', sans-serif;
+    box-shadow: 0px 1px 6px rgba(0, 0, 0, 0.05);
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+}
+
+.so-cal.collapsed {
+  display:none;
+}
+
+.so-cal-input {
+  width: 100%;
+}
+
+.date-input {
+  width: inherit;
+  padding: 12px 20px;
+  font-size: 14px;
+  color: #666;
+  font-family: 'Open Sans', sans-serif;
+
+}
+
+.so-cal-daterange-header {
+    overflow: hidden;
+}
+
+.so-cal-daterange-subheader {
+    font-size: 10px;
+}
+
+.remove-date {
+  position: absolute;
+  right: 15px;
+  top: 20px;
+  height: 28px;
+  width: 28px;
+  border-radius: 50%;
+  line-height: 28px;
+  color: #CCC;
+  font-size: 16px;
+  z-index: 2;
+}
+
+.remove-date:hover {
+  background: #EEE;
+}
+
+.so-cal-date {
+    padding: 15px;
+    width: 50%;
+    display: inline-block;
+    float:left;
+    text-align:center;
+    cursor: pointer;
+    position: relative;
+}
+
+.so-cal-date:last-of-type {
+  border-left: 1px solid #EEE;
+}
+
+.so-cal-date.active {
+    color: #47A2ED;
+    font-weight: bold;
+}
+
+.so-cal div{
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+}
+
+.so-cal-header {
+    width: 100%;
+    height: 66px;
+    line-height: 62px;
+    overflow: hidden;
+    text-align: center;
+    font-weight: 600;
+    background: #47A2ED;
+    color: #FFF;
+}
+
+.so-cal-changer {
+    width: calc(100% / 7);
+    float:left;
+    cursor: pointer;
+    font-size: 25px;
+    text-align:center;
+}
+
+.arrow-icon {
+    display:inline-block;
+    border-radius: 50%;
+    background: #47A2ED;
+    height: 40px;
+    width: 40px;
+    line-height: 35px;
+    margin-top: 13px;
+    transition: background 0.3s ease;
+}
+
+.so-cal-changer:hover .arrow-icon{
+    background: #5DB5FC;
+}
+
+.so-cal-month-title {
+    width: calc((100% / 7) * 5);
+    height: 60px;
+    position: relative;
+    top: 3px;
+    float:left;
+}
+
+.so-cal-month-title.year-view {
+  width: 100%;
+}
+
+.so-cal-days-header {
+    width: 100%;
+    overflow: hidden;
+}
+
+.so-cal-date-grid {
+    width: 100%;
+}
+
+.so-cal-date-grid:after {
+    content: '';
+    display: block;
+    height: 0px;
+    clear: both;
+}
+
+.so-cal-day-title {
+    width: calc(100% / 7);
+    display: inline-block;
+    padding: 15px;
+    text-align: center;
+    background: #EEE;
+}
+
+.so-cal-day {
+    background: #FAFAFA;
+    width: calc(100% / 7);
+    display: inline-block;
+    padding: 20px 0;
+    text-align: center;
+    float: left;
+    box-shadow: 0px 0px 0px rgba(0,0,0,0);
+    cursor: pointer;
+    transition: box-shadow 0.3s ease, background 0.3s ease;
+    position: relative;
+    color: #DDD;
+}
+
+.so-cal-day:hover {
+    box-shadow: 0px 3px 8px rgba(0,0,0,0.1);
+    z-index: 1;
+}
+
+.so-cal-day.disabled {
+    background: #CCC;
+    color: #AAA;
+}
+
+.so-cal-day.restricted {
+    background: #CCC !important;
+    color: #AAA !important;
+}
+
+.so-cal-day.restricted:hover,
+.so-cal-day.disabled:hover {
+    box-shadow: none;
+    cursor: default;
+}
+
+.so-cal-day.inactive.restricted,
+.so-cal-day.inactive.disabled {
+    background: #DDD;
+    color: #AAA;
+}
+
+.so-cal-day.selected-day,
+.so-cal-day.within-range,
+.so-cal-day.start-cap,
+.so-cal-day.end-cap {
+    background: #47A2ED;
+    color: #FFF;
+}
+
+.so-cal-day.inactive.within-range {
+    background: #5DB5FC;
+    color: #FFF;
+}
+
+.so-cal-day.today {
+    font-weight: bold;
+    color: #47A2ED;
+}
+
+.so-cal-day.today:before {
+    content: '';
+    position: absolute;
+    top: calc(50% - 17px);
+    left: calc(50% - 16px);
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    border: 1px solid #47A2ED;
+}
+
+.so-cal-day.today.selected-day,
+.so-cal-day.today.within-range,
+.so-cal-day.today.start-cap,
+.so-cal-day.today.end-cap {
+    color: #FFF;
+}
+
+.so-cal-day.today.selected-day:before,
+.so-cal-day.today.within-range:before,
+.so-cal-day.today.start-cap:before,
+.so-cal-day.today.end-cap:before {
+    border-color: #FFF;
+}
+
+.so-cal-day.today.restricted {
+    color: #999;
+}
+
+.so-cal-day.today.restricted:before {
+    border-color: #999;
+}
+
+.so-cal-day.within-range.start-cap:after {
+    content: '';
+    position: absolute;
+    border: 30px solid transparent;
+    border-right: 15px solid transparent;
+    border-left: 15px solid rgba(255,255,255, 0.2);
+    top: 0;
+    bottom:0;
+    left: 0;
+}
+
+.so-cal-day.within-range.end-cap:after {
+    content: '';
+    position: absolute;
+    border: 30px solid transparent;
+    border-left: 15px solid transparent;
+    border-right: 15px solid rgba(255,255,255, 0.2);
+    top: 0;
+    bottom: 0;
+    right: 0;
+}
+
+.current-month {
+    background: #FFF;
+    color: #666;
+}
+
+.current-month:hover {
+    box-shadow: 0px 3px 8px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.so-cal-month,
+.so-cal-year {
+  width: calc(100% / 3);
+  display: inline-block;
+  float: left;
+  padding: 43px 0;
+  text-align: center;
+  box-shadow: 0px 0px 0px rgba(0,0,0,0);
+  cursor: pointer;
+  transition: box-shadow 0.3s ease, background 0.3s ease;
+  position: relative;
+}
+
+.so-cal-month:hover,
+.so-cal-year:hover {
+    box-shadow: 0px 3px 8px rgba(0,0,0,0.1);
+    z-index: 1;
+}
+
+.so-cal-month.current-month,
+.so-cal-year.current-year {
+  font-weight: bold;
+  color: #47A2ED;
+}
+
+.so-cal-month.disabled,
+.so-cal-year.disabled {
+  color: #DDD;
+}
+
+.so-cal-month.disabled:hover {
+  box-shadow: none;
+}
+
+.so-cal-daterange {
+    position: relative;
+    padding: 20px 30px;
+    background: #47A2ED;
+    color: #FFF;
+}
+
+.so-cal-remove-daterange {
+    position: absolute;
+    right: 20px;
+    top:16px;
+    cursor: pointer;
+    height:30px;
+    width:30px;
+    text-align: center;
+    line-height:30px;
+    border-radius: 50%;
+    background: #47A2ED;
+    transition: background 0.3s ease;
+}
+
+.so-cal-remove-daterange:hover {
+    background: #5DB5FC;
+}
