@@ -1,4 +1,4 @@
-var SoCal = function() {
+function SoCal() {
     this.minDate;
     this.selectedDate;
     this.date = new Date();
@@ -103,8 +103,10 @@ SoCal.prototype.util = {
         return selected + withinRange + startCap + endCap + minDate + today;
     },
     formatDate: function(date, type) {
+        var date = new Date(date);
+
         var types = {
-            'numeric': date.getFullYear() + '-' + ((date.getMonth() + 1) < 10 ? 0 : '') + (date.getMonth() + 1) + '-' + (date.getDate() < 10 ? 0 : '') + date.getDate(),
+            'numeric': date.getFullYear() + '/' + ((date.getMonth() + 1) < 10 ? 0 : '') + (date.getMonth() + 1) + '/' + (date.getDate() < 10 ? 0 : '') + date.getDate(),
             'semantic': this.config.month_long[date.getMonth()] + ' ' +  date.getDate() + ', ' + date.getFullYear(),
         }
 
@@ -147,7 +149,7 @@ SoCal.prototype.enableDateRanges = function() {
 
 SoCal.prototype.enableMinDate = function(date) {
     this.minDateEnabled = true;
-    this.minDate = date ? new Date(date.split('-')) : this.today;
+    this.minDate = date ? new Date(this.util.formatDate.call(this, date, 'numeric')) : this.today;
 
     return this;
 }
@@ -594,37 +596,41 @@ SoCal.prototype.selectYear = function(year) {
     this.updateCalendar(this.currentDay);
 }
 
+SoCal.prototype.addStartDate = function() {
+    this.dateRange.start_date = date;
+    this.dateRange.start_display = this.util.formatDate.call(this, date, 'semantic');
+    this.dateRangeEditPosition = null;
+
+    if (this.dateRange.end_date && this.dateRange.end_date.valueOf() <= date.valueOf()) {
+        this.dateRange.end_date = null;
+        this.dateRange.end_display = null;
+    }
+
+    this.callbacks['dateRangeChange'] && this.callbacks['dateRangeChange'].call(this, this.dateRange);
+};
+
+SoCal.prototype.addEndDate = function() {
+    this.dateRange.end_date = date;
+    this.dateRange.end_display = this.util.formatDate.call(this, date, 'semantic');
+    this.dateRangeEditPosition = null;
+
+    if (this.dateRange.start_date && this.dateRange.start_date.valueOf() >= date.valueOf()) {
+        delete this.dateRange.start_date;
+        delete this.dateRange.start_display;
+    }
+
+    this.callbacks['dateRangeChange'] && this.callbacks['dateRangeChange'].call(this, this.dateRange);
+};
+
 SoCal.prototype.addToDateRange = function(date) {
     var range = this.config.daterange_positions;
 
     if (this.dateRangeEditPosition === 'start' || (!this.dateRange.start_date && !this.dateRangeEditPosition)) {
-
-        this.dateRange.start_date = date;
-        this.dateRange.start_display = this.util.formatDate.call(this, date, 'semantic');
-        this.dateRangeEditPosition = null;
-
-        if (this.dateRange.end_date && this.dateRange.end_date.valueOf() <= date.valueOf()) {
-            this.dateRange.end_date = null;
-            this.dateRange.end_display = null;
-        }
-
-        this.callbacks['dateRangeChange'] && this.callbacks['dateRangeChange'].call(this, this.dateRange);
+        this.addStartDate();
         return this;
-
     } else if (this.dateRangeEditPosition === 'end') {
-
-        this.dateRange.end_date = date;
-        this.dateRange.end_display = this.util.formatDate.call(this, date, 'semantic');
-        this.dateRangeEditPosition = null;
-
-        if (this.dateRange.start_date && this.dateRange.start_date.valueOf() >= date.valueOf()) {
-            delete this.dateRange.start_date;
-            delete this.dateRange.start_display;
-        }
-
-        this.callbacks['dateRangeChange'] && this.callbacks['dateRangeChange'].call(this, this.dateRange);
+        this.addEndDate();
         return this;
-
     }
 
     var startGreaterThanEndDate = date.valueOf() > this.dateRange.start_date.valueOf() | 0;

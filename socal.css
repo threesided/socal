@@ -1,13 +1,8 @@
-body {
-    margin: 0;
-    padding: 0;
-}
-
-.clickable {
+.so-cal .clickable {
   cursor: pointer;
 }
 
-.no-select {
+.so-cal .no-select {
     -webkit-touch-callout: none;
     -webkit-user-select: none;
     -khtml-user-select: none;
@@ -33,11 +28,17 @@ body {
   display:none;
 }
 
-.so-cal-input {
+.so-cal div{
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+}
+
+.so-cal .so-cal-input {
   width: 100%;
 }
 
-.date-input {
+.so-cal .date-input {
   width: inherit;
   padding: 12px 20px;
   font-size: 14px;
@@ -46,15 +47,15 @@ body {
 
 }
 
-.so-cal-daterange-header {
+.so-cal .so-cal-daterange-header {
     overflow: hidden;
 }
 
-.so-cal-daterange-subheader {
+.so-cal .so-cal-daterange-subheader {
     font-size: 10px;
 }
 
-.remove-date {
+.so-cal .remove-date {
   position: absolute;
   right: 15px;
   top: 20px;
@@ -67,11 +68,11 @@ body {
   z-index: 2;
 }
 
-.remove-date:hover {
+.so-cal .remove-date:hover {
   background: #EEE;
 }
 
-.so-cal-date {
+.so-cal .so-cal-date {
     padding: 15px;
     width: 50%;
     display: inline-block;
@@ -81,22 +82,16 @@ body {
     position: relative;
 }
 
-.so-cal-date:last-of-type {
+.so-cal .so-cal-date:last-of-type {
   border-left: 1px solid #EEE;
 }
 
-.so-cal-date.active {
+.so-cal .so-cal-date.active {
     color: #47A2ED;
     font-weight: bold;
 }
 
-.so-cal div{
-    box-sizing: border-box;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-}
-
-.so-cal-header {
+.so-cal .so-cal-header {
     width: 100%;
     height: 66px;
     line-height: 62px;
@@ -107,7 +102,7 @@ body {
     color: #FFF;
 }
 
-.so-cal-changer {
+.so-cal .so-cal-changer {
     width: calc(100% / 7);
     float:left;
     cursor: pointer;
@@ -115,7 +110,7 @@ body {
     text-align:center;
 }
 
-.arrow-icon {
+.so-cal .arrow-icon {
     display:inline-block;
     border-radius: 50%;
     background: #47A2ED;
@@ -126,11 +121,11 @@ body {
     transition: background 0.3s ease;
 }
 
-.so-cal-changer:hover .arrow-icon{
+.so-cal .so-cal-changer:hover .arrow-icon{
     background: #5DB5FC;
 }
 
-.so-cal-month-title {
+.so-cal .so-cal-month-title {
     width: calc((100% / 7) * 5);
     height: 60px;
     position: relative;
@@ -138,27 +133,27 @@ body {
     float:left;
 }
 
-.so-cal-month-title.year-view {
+.so-cal .so-cal-month-title.year-view {
   width: 100%;
 }
 
-.so-cal-days-header {
+.so-cal .so-cal-days-header {
     width: 100%;
     overflow: hidden;
 }
 
-.so-cal-date-grid {
+.so-cal .so-cal-date-grid {
     width: 100%;
 }
 
-.so-cal-date-grid:after {
+.so-cal .so-cal-date-grid:after {
     content: '';
     display: block;
     height: 0px;
     clear: both;
 }
 
-.so-cal-day-title {
+.so-cal .so-cal-day-title {
     width: calc(100% / 7);
     display: inline-block;
     padding: 15px;
@@ -166,7 +161,7 @@ body {
     background: #EEE;
 }
 
-.so-cal-day {
+.so-cal .so-cal-day {
     background: #FAFAFA;
     width: calc(100% / 7);
     display: inline-block;
@@ -180,52 +175,52 @@ body {
     color: #DDD;
 }
 
-.so-cal-day:hover {
+.so-cal .so-cal-day:hover {
     box-shadow: 0px 3px 8px rgba(0,0,0,0.1);
     z-index: 1;
 }
 
-.so-cal-day.disabled {
+.so-cal .so-cal-day.disabled {
     background: #CCC;
     color: #AAA;
 }
 
-.so-cal-day.restricted {
+.so-cal .so-cal-day.restricted {
     background: #CCC !important;
     color: #AAA !important;
 }
 
-.so-cal-day.restricted:hover,
-.so-cal-day.disabled:hover {
+.so-cal .so-cal-day.restricted:hover,
+.so-cal .so-cal-day.disabled:hover {
     box-shadow: none;
     cursor: default;
 }
 
-.so-cal-day.inactive.restricted,
-.so-cal-day.inactive.disabled {
+.so-cal .so-cal-day.inactive.restricted,
+.so-cal .so-cal-day.inactive.disabled {
     background: #DDD;
     color: #AAA;
 }
 
-.so-cal-day.selected-day,
-.so-cal-day.within-range,
-.so-cal-day.start-cap,
-.so-cal-day.end-cap {
+.so-cal .so-cal-day.selected-day,
+.so-cal .so-cal-day.within-range,
+.so-cal .so-cal-day.start-cap,
+.so-cal .so-cal-day.end-cap {
     background: #47A2ED;
     color: #FFF;
 }
 
-.so-cal-day.inactive.within-range {
+.so-cal .so-cal-day.inactive.within-range {
     background: #5DB5FC;
     color: #FFF;
 }
 
-.so-cal-day.today {
+.so-cal .so-cal-day.today {
     font-weight: bold;
     color: #47A2ED;
 }
 
-.so-cal-day.today:before {
+.so-cal .so-cal-day.today:before {
     content: '';
     position: absolute;
     top: calc(50% - 17px);
@@ -236,29 +231,29 @@ body {
     border: 1px solid #47A2ED;
 }
 
-.so-cal-day.today.selected-day,
-.so-cal-day.today.within-range,
-.so-cal-day.today.start-cap,
-.so-cal-day.today.end-cap {
+.so-cal .so-cal-day.today.selected-day,
+.so-cal .so-cal-day.today.within-range,
+.so-cal .so-cal-day.today.start-cap,
+.so-cal .so-cal-day.today.end-cap {
     color: #FFF;
 }
 
-.so-cal-day.today.selected-day:before,
-.so-cal-day.today.within-range:before,
-.so-cal-day.today.start-cap:before,
-.so-cal-day.today.end-cap:before {
+.so-cal .so-cal-day.today.selected-day:before,
+.so-cal .so-cal-day.today.within-range:before,
+.so-cal .so-cal-day.today.start-cap:before,
+.so-cal .so-cal-day.today.end-cap:before {
     border-color: #FFF;
 }
 
-.so-cal-day.today.restricted {
+.so-cal .so-cal-day.today.restricted {
     color: #999;
 }
 
-.so-cal-day.today.restricted:before {
+.so-cal .so-cal-day.today.restricted:before {
     border-color: #999;
 }
 
-.so-cal-day.within-range.start-cap:after {
+.so-cal .so-cal-day.within-range.start-cap:after {
     content: '';
     position: absolute;
     border: 30px solid transparent;
@@ -269,7 +264,7 @@ body {
     left: 0;
 }
 
-.so-cal-day.within-range.end-cap:after {
+.so-cal .so-cal-day.within-range.end-cap:after {
     content: '';
     position: absolute;
     border: 30px solid transparent;
@@ -280,18 +275,18 @@ body {
     right: 0;
 }
 
-.current-month {
+.so-cal .current-month {
     background: #FFF;
     color: #666;
 }
 
-.current-month:hover {
+.so-cal .current-month:hover {
     box-shadow: 0px 3px 8px rgba(0,0,0,0.2);
     z-index: 1;
 }
 
-.so-cal-month,
-.so-cal-year {
+.so-cal .so-cal-month,
+.so-cal .so-cal-year {
   width: calc(100% / 3);
   display: inline-block;
   float: left;
@@ -303,8 +298,8 @@ body {
   position: relative;
 }
 
-.so-cal-month:hover,
-.so-cal-year:hover {
+.so-cal .so-cal-month:hover,
+.so-cal .so-cal-year:hover {
     box-shadow: 0px 3px 8px rgba(0,0,0,0.1);
     z-index: 1;
 }
@@ -315,23 +310,23 @@ body {
   color: #47A2ED;
 }
 
-.so-cal-month.disabled,
-.so-cal-year.disabled {
+.so-cal .so-cal-month.disabled,
+.so-cal .so-cal-year.disabled {
   color: #DDD;
 }
 
-.so-cal-month.disabled:hover {
+.so-cal .so-cal-month.disabled:hover {
   box-shadow: none;
 }
 
-.so-cal-daterange {
+.so-cal .so-cal-daterange {
     position: relative;
     padding: 20px 30px;
     background: #47A2ED;
     color: #FFF;
 }
 
-.so-cal-remove-daterange {
+.so-cal .so-cal-remove-daterange {
     position: absolute;
     right: 20px;
     top:16px;
@@ -345,6 +340,6 @@ body {
     transition: background 0.3s ease;
 }
 
-.so-cal-remove-daterange:hover {
+.so-cal .so-cal-remove-daterange:hover {
     background: #5DB5FC;
 }
