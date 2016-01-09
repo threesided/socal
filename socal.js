@@ -106,7 +106,7 @@ SoCal.prototype.util = {
         var date = new Date(date);
 
         var types = {
-            'numeric': date.getFullYear() + '/' + ((date.getMonth() + 1) < 10 ? 0 : '') + (date.getMonth() + 1) + '/' + (date.getDate() < 10 ? 0 : '') + date.getDate(),
+            'numeric': date.toLocaleDateString(),
             'semantic': this.config.month_long[date.getMonth()] + ' ' +  date.getDate() + ', ' + date.getFullYear(),
         }
 
@@ -211,7 +211,7 @@ SoCal.prototype.getMonthParams = function() {
     this.currentWeekday = this.date.getDay();
     this.daysInCurrentMonth = new Date(this.currentYear, (this.currentMonth + 1), 0).getDate();
     this.monthStartOffset = new Date(this.currentYear, this.currentMonth, 1).getDay();
-    this.monthEndOffset = 42 - (this.daysInCurrentMonth + this.monthStartOffset);
+    this.monthEndOffset = (6 * 7) - (this.daysInCurrentMonth + this.monthStartOffset);
     this.currentMonthDisplay = this.config.month_long[this.currentMonth];
 };
 
