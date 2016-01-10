@@ -45,9 +45,9 @@ SoCal.prototype.renderDayCalendar = function () {
 
     var html =
         '<div class="so-cal-header no-select">' +
-            '<div id="so-cal-previous" class="so-cal-changer"><span class="arrow-icon">‹</span></div>' +
+            '<div id="so-cal-previous" class="so-cal-changer"><span class="arrow-icon"><</span></div>' +
             '<div class="so-cal-month-title ' + monthHeaderClass + '" id="month-header">' + this.currentMonthDisplay + (this.showYearEnabled ? ' - ' + this.currentYear : '') + '</div>' +
-            '<div id="so-cal-next" class="so-cal-changer"><span class="arrow-icon">›</span></div>' +
+            '<div id="so-cal-next" class="so-cal-changer"><span class="arrow-icon">></span></div>' +
         '</div>' +
         '<div class="so-cal-days-header">' + dayTitles + '</div>' +
         '<div class="so-cal-date-grid">' + daysBeforeMonth + daysCurrentMonth + daysAfterMonth +
@@ -78,9 +78,9 @@ SoCal.prototype.renderMonthCalendar = function () {
 
     var html =
         '<div class="so-cal-header no-select">' +
-            '<div id="so-cal-previous" class="so-cal-changer"><span class="arrow-icon">‹</span></div>' +
+            '<div id="so-cal-previous" class="so-cal-changer"><span class="arrow-icon"><</span></div>' +
             '<div class="so-cal-month-title month-view ' + monthHeaderClass + '" id="year-header">' + this.currentYear + '</div>' +
-            '<div id="so-cal-next" class="so-cal-changer"><span class="arrow-icon">›</span></div>' +
+            '<div id="so-cal-next" class="so-cal-changer"><span class="arrow-icon">></span></div>' +
         '</div>' +
         '<div class="so-cal-date-grid">' + monthEls + '</div>';
 

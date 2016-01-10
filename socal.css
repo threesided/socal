@@ -116,7 +116,7 @@
     background: #47A2ED;
     height: 40px;
     width: 40px;
-    line-height: 35px;
+    line-height: 38px;
     margin-top: 13px;
     transition: background 0.3s ease;
 }
@@ -183,23 +183,27 @@
 .so-cal .so-cal-day.disabled {
     background: #CCC;
     color: #AAA;
+    cursor: not-allowed;
 }
 
 .so-cal .so-cal-day.restricted {
     background: #CCC !important;
     color: #AAA !important;
+    cursor: not-allowed;
 }
 
 .so-cal .so-cal-day.restricted:hover,
 .so-cal .so-cal-day.disabled:hover {
     box-shadow: none;
     cursor: default;
+    cursor: not-allowed;
 }
 
 .so-cal .so-cal-day.inactive.restricted,
 .so-cal .so-cal-day.inactive.disabled {
     background: #DDD;
     color: #AAA;
+    cursor: not-allowed;
 }
 
 .so-cal .so-cal-day.selected-day,
