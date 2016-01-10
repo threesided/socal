@@ -1,2 +1,6 @@
 .DS_Store
 calendar_test_page.html
+node_modules
+Gruntfile.js
+package.json
+builds/*

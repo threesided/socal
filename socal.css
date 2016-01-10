@@ -224,7 +224,7 @@
     content: '';
     position: absolute;
     top: calc(50% - 17px);
-    left: calc(50% - 16px);
+    left: calc(50% - 17px);
     border-radius: 50%;
     width: 32px;
     height: 32px;
