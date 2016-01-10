@@ -47,6 +47,7 @@ SoCal.prototype.enableDateSelection = function() {
 };
 
 SoCal.prototype.enableDateRanges = function() {
+    this.dateSelectEnabled = true;
     this.dateRangeEnabled = true;
 
     return this;
